@@ -1,0 +1,11 @@
+KD-Tree
+=======
+As k-dimension tree, it speeds up searching within the k-dimension space.
+This is a demo for searching nearest neighbour within 2 dimensions.
+
+Use random2d to generate some random points, say 1 million.
+Then pipe those points into tree2d and find one of the points within
+(-10.0, -10.0) to (10.0, 10.0) range. The demo do the search 1000 times
+to amplify the speedup for searching when you have a deep tree.
+
+Author: Ziyan Zhou <zhou@ziyan.info>

@@ -1,0 +1,7 @@
+Head Tracking Display
+
+You'll need OpenGL and OpenCV under Linux environment to compile and run this project.
+
+Commands:
+c - enter/leave full screen
+m - change mode (panaroma picture/lasers)

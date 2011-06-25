@@ -1,0 +1,19 @@
+#!/sbin/runscript
+
+ERC="/usr/sbin/erc"
+ARGS=""
+PIDFILE="/var/run/erc"
+
+depend() {
+	need net
+}
+start() {
+	ebegin "Starting erc"
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PIDFILE} --exec ${ERC} -- ${ARGS}
+	eend $?
+}
+stop() {
+	ebegin "Stopping erc"
+	start-stop-daemon --stop --quiet --oknodo --pidfile ${PIDFILE}
+	eend $?
+}

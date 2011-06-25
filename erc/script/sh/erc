@@ -1,0 +1,26 @@
+#!/bin/sh
+
+ERC="/usr/sbin/erc"
+ARGS=""
+PIDFILE="/var/run/erc"
+
+test -x ${ERC} || exit 0
+
+case "$1" in
+	start)
+		echo -n "Starting erc"
+		start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PIDFILE} --exec ${ERC} -- ${ARGS}
+		echo "."
+		;;
+	stop)
+		echo -n "Stopping erc"
+		start-stop-daemon --stop --quiet --oknodo --pidfile ${PIDFILE}
+		rm -f ${PIDFILE}
+		echo "."
+		;;
+	*)
+		echo "Usage: /etc/init.d/erc {start|stop}"
+		exit 1
+esac
+
+exit 0

@@ -1,0 +1,10 @@
+Compile
+=======
+First run ./gen.sh, this will generate the configure script.
+Then, run ./configure and then make.
+
+Directories
+===========
+common/ - common utility to be used in all client programs, e.g. the player camera image to IplImage conversion
+htd/ - head tracking display, 3d scenes that reacts to the position of the head given by a position3d interface
+

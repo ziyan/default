@@ -1,0 +1,6 @@
+Compile
+=======
+First run ./gen.sh, this will generate the configure script.
+Then, run ./configure and then make.
+
+

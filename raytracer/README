@@ -1,0 +1,80 @@
+Raytracer
+=========
+Please direct questions to Ziyan Zhou <zhou@ziyan.info>
+
+Compilation
+===========
+To compile the project, make sure you have the follow libraries installed on
+your system:
+
+- libboost-dev
+
+First, you have to generate configuration script for the project, you can do
+that by running:
+
+./gen.sh
+
+Then, you have to generate Makefile for the project, by running:
+
+./configure
+
+After that, it is simply:
+
+make
+
+Execution
+=========
+The program comes with two parts, the rendering part, and the tone
+reproduction part. To render the default 1024x768 image, you can run:
+
+./raytracer image.ppm
+
+You will need a image viewer that can handle PPM images to see the rendering
+result.
+
+To execute tone reproduction on your rendered image, you can do:
+
+./tonereproduction image.ppm output.ppm
+
+Documentation
+=============
+
+Overview
+--------
+\- Object
+	\- World (World has trace() method that does recursive ray tracing)
+	\- Light (Light is a special object that belongs to a World)
+	\- Shape (Shapes can be intersected by rays, also contains Phong model)
+		\- Triangle (Base shape)
+		\- Sphere (Base shape)
+		\- Cube (Composite shape, tesselated by Triangles)
+		\- Cone (Composite cone, tesselated by Triangles)
+
+The raytracer is object oriented. Objects in the scene are all subclass of the
+Object class. Object can contain children. So the scene is consist of a top
+level World object, which contains Light objects, Floor shape, Sphere shape,
+Cone shapes, and Cube shapes. Floor shape is simply a composite shape that
+contains two Triangle shapess. Cone shape and Cube shape are also tesselated
+from Triangle shapes. The base shapes in the project is Triangle and Sphere.
+These are the shapes that can actually intersect the rays. Shape is a subclass
+of Object.
+
+So to add an object into the scene, all you have to do is create the object
+with the World as the parent. This is commonly done in the raytracer.cpp.
+
+
+Directories
+-----------
+The structure of the directories:
+- includes/
+	- common/ - common utilities and structs header files
+			including color definition, point3d, point2d, ray, etc.
+	- model/ - model header files, including objects,
+			world, light, shape, etc.
+	- project/ - projection related header files, including camera, image
+	- shapes/ - shapes header files, including triangle, cone, cube, sphere
+- common/ - implementation cpp files for common utilities
+- model/ - implementation cpp files for models
+- projection/ - implementation cpp for camera and image
+- shapes/ - implementation cpp files for shapes
+

@@ -1,0 +1,23 @@
+Compile
+=======
+First run ./gen.sh, this will generate the configure script.
+Then, run ./configure and then make.
+
+Run
+===
+To setup a camera server:
+player ../configs/local.cfg
+
+To setup a server with two cameras:
+player ../configs/double.cfg
+
+To setup the head tracking server (after setting up camera servers, see the config file content):
+player ../configs/ht.cfg
+
+Directories
+===========
+common/ - common utility to be used in all plugin programs, e.g. the player camera image to IplImage conversion
+motion/ - motion tracker, given camera interface, output blobfinder interface
+face/ - face detection, given camera interface, output blobfinder interface
+ht/ - head tracking, given blobfinder interfaces, figures out x, y, z coordinates, output position3d interface
+

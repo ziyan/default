@@ -1,0 +1,76 @@
+SLAM Visualization for Player
+=============================
+Copyright (C) Ziyan Zhou 2009 <zhou@ziyan.info>
+
+Although, other platforms are supported in theory, the project has only been
+tested on linux platform, specifically Ubuntu Jaunty. It is highly recommended
+that you try to compile and run it on a linux platform first.
+
+Source
+------
+
+The project is open source under GPL at:
+http://svn.ziyan.info/svn/default/trunk/slam
+
+Screenshots
+-----------
+http://picasaweb.google.com/ziyan.info/ZiyanSBlog
+
+Prerequisite
+------------
+
+To compile and execute the program, these packages are needed:
+
+	* Player v2.1.2: the source can be found at http://playerstage.sourceforge.net/
+	* Qt4: package name libqt4-dev, or google its source
+	* OpenGL
+	* Optionally Stage v2.1.1: can be found at the same place as the Player
+
+Compilation
+-----------                
+To compile the project, first create the Makefile by running:
+	qmake -unix
+                        
+Then, compile the program by running:
+	make
+                                
+Execution
+---------
+                                
+The program prints out usage message if no argument is supplied:
+	Usage: ./slam <map-file> [hostname] [port]
+
+There are two modes that the program operates in:
+
+	* When no hostname is supplied, the program simply plays back the map
+	  file specified.
+	* When hostname is supplied, the program creates the map file if it
+	  does not exist, or continue mapping based on the supplied map file.
+	  The program will save the map into the map file when the visualizer
+	  window is closed. Hitting ctrl+C will result in data loss.
+
+Simulation
+----------
+
+Since real robot is hard to find and play with, the project provides a
+simulation configuration. Stage is needed to complete this part. In the
+stage/ directory, a script named stage.sh is provided for starting up the
+simulation. Another script named joystick.sh is provided for controlling the
+robot using keyboard. After both scripts are up and running, you may start
+the visualizer using localhost as the hostname argument.
+
+Play Recordings
+---------------
+
+The program can load previously built map and allow interactive playback.
+This option does not require stage to be present. The recorded data includes
+3D texture which is very large. These recoding are stored as zip files in
+storage/. Before playing those recordings, the corresponding zip file has to
+be decompressed. For example, to playback sim.zip, first unzip sim.zip, then
+go back up one directory and run ./slam storage/sim. You can use mouse to
+interact with the recorded map. sim.zip and test.zip contains simulated maps
+with no textures, while other zips contains 3D textures.
+
+To get these recording, download them here:
+http://drop.io/ghszhux
+
